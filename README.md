@@ -6,11 +6,10 @@
 3. Right-click on ```port-forward-data.tar.gz```, then click on "Download". It will download to your machine.
 4. For security, delete your ```port-forward-data.tar.gz``` file from your XDC.
 5. Extract ```port-forward-data.tar.gz```. You will find another tar.gz file called ```port-forward.tar.gz```. Do **NOT** extract this file. This is required for one of the two following scripts that you will run on your machine:
-- port-forwarding-unix.sh (for Mac/Linux users)
-- port-forwarding-windows.ps1 (for Windows 10/11 users)
-6a. Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```sudo ./port-forwarding-unix.sh```.
-6b. Windows users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually.
-7. Delete all of your extracted files when you are done. They are no-longer required.
+6. Follow the instructions below based on your operating system:
+- Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```sudo ./port-forwarding-unix.sh```.
+- Windows 10/11 users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually.
+7. Delete all of your extracted files when you are done. They are no longer required.
 
 ### How to Run:
 1. To access your XDC <ins>without</ins> port-forwarding, you can type ```ssh username-xdc-proj``` in your terminal (or command prompt or PowerShell if you're on Windows).
@@ -18,6 +17,7 @@
 2. To access your XDC <ins>with</ins> port-forwarding, you can type ```ssh -L port:node:80 username-xdc-proj```
 - Example: ```ssh -L 8080:pathname:80 umdsecXX-xdc-umdsecXX``` where umdsecXX is the name of the user and the name of the project, with xdc being the name of the node. 8080 is an arbitrary number and can be a random four-digit number. node is the name of the materialization's node that you want to connect to. <ins>Read your lab manual if you're unsure what the name of your node is.<ins>
 3. You will be asked to add two footprints when SSH'ing your first time. Type ```yes``` when prompted. The first one is to add Merge as a recognized host. The second one is to add your XDC as a recognized host. This only needs to be done once.
+4. <ins>If you are port-forwarding</ins>: Open a web browser and navigate to ```localhost:port```, where ```port``` is the number that you used when running the command from Step 2. For example: ```localhost:8080``` would be typed into the address bar. 
 
 ### Additional Notes:
 - You are unable to do port-forwarding with more than one account. If you need to change accounts, please delete the ```Host mergejump``` and ```Host username-xdc-proj``` segments from your ```config``` file and delete your ```merge_key``` file, both of which are located in ```~/.ssh/``` (for Mac/Linux) or ```C:\Users\username\.ssh``` (for Windows). Then, re-run the setup above.
