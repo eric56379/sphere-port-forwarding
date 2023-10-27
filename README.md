@@ -14,9 +14,9 @@
 7. Delete all of your extracted files when you are done. 
 
 ### How to Run:
-1. To access your XDC <ins>without<ins> port-forwarding, you can type ```ssh username-xdc-proj``` in your terminal (or command prompt or PowerShell if you're on Windows).
+1. To access your XDC <ins>without</ins> port-forwarding, you can type ```ssh username-xdc-proj``` in your terminal (or command prompt or PowerShell if you're on Windows).
 - Example: ```ssh umdsecXX-xdc-umdsecXX``` where umdsecXX is the name of the user and the name of the project, with xdc being the name of the XDC.
-2. To access your XDC <ins>with<ins> port-forwarding, you can type ```ssh -L port:node:80 username-xdc-proj```
+2. To access your XDC <ins>with</ins> port-forwarding, you can type ```ssh -L port:node:80 username-xdc-proj```
 - Example: ```ssh -L 8080:pathname:80 umdsecXX-xdc-umdsecXX``` where umdsecXX is the name of the user and the name of the project, with xdc being the name of the node. 8080 is an arbitrary number and can be a random four-digit number. node is the name of the materialization's node that you want to connect to. <ins>Read your lab manual if you're unsure what the name of your node is.<ins>
 3. You will be asked to add two footprints when SSH'ing your first time. Type ```yes``` when prompted. The first one is to add Merge as a recognized host. The second one is to add your XDC as a recognized host. This only needs to be done once.
 
