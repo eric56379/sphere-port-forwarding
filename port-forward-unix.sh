@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 user=$SUDO_USER
 
@@ -7,15 +7,15 @@ if [ "$EUID" -ne 0 ]
     exit 1
 fi
 
-if [ ! -f port-forward.tar.gz ]; then
+if [ ! -f "port-forward.tar.gz" ]; then
     echo "port-forward.tar.gz is not found. Make sure you run this in the same directory as your tarball."
     exit 1
 fi
 
-echo "Checking for ~/.ssh/ folder..."
-if [ ! -d ~/.ssh/ ]; then
-  echo "~/.ssh/ does not exist. Creating..."
-  mkdir ~/.ssh/
+echo "Checking for $HOME/.ssh/ folder..."
+if [ ! -d "$HOME/.ssh/" ]; then
+  echo "$HOME/.ssh/ does not exist. Creating..."
+  mkdir $HOME/.ssh/
 fi
 
 echo "Extracting the tarball."
@@ -38,21 +38,19 @@ if [ ! -f merge_key ]; then
 fi
 
 echo "Checking for config file..."
-if [ ! -e ~/.ssh/config ]; then
-    echo "config does not exist. Moving current config file from tarball."
-    touch ~/.ssh/config
+if [ ! -f "$HOME/.ssh/config" ]; then
+    echo "config does not exist. Creating the config file."
+    touch $HOME/.ssh/config
     cat config >> $HOME/.ssh/config
-    # mv config ~/.ssh/
+    # mv config $HOME/.ssh/
 else 
     echo "File exists."
-    if grep -q "Host mergejump" "$HOME/.ssh/config"; then
+    if grep -Fxq "Host mergejump" "$HOME/.ssh/config"; then
         echo "Merge information was found. Ignoring..."
-        rm -f config
     else
         echo "Merge information was not found. Appending the config file to the existing config file..."
         echo -e "" >> $HOME/.ssh/config
         cat config >> $HOME/.ssh/config
-        rm -f config
     fi
 fi 
 
@@ -66,11 +64,12 @@ else
     echo "known_hosts exists. Ignoring..."
 fi 
 
-echo "Moving merge_key into ~/.ssh..."
-mv merge_key ~/.ssh/
-cd ~/.ssh
+echo "Moving merge_key into $HOME/.ssh..."
+mv merge_key $HOME/.ssh/
+pushd $HOME/.ssh > /dev/null
 chmod 600 merge_key
 chown $user merge_key config
+popd > /dev/null
 
 # Clean up:
 cd ..
