@@ -9,9 +9,9 @@
 - port-forwarding-windows.sh
 - port-forwarding-mac.sh
 - port-forwarding-linux.sh
-6. Mac/Linux users: Open a terminal window and navigate to the directory where these .sh files are located. Type ```sudo port-forwarding-XXX.sh```, where XXX is the operating system which you are on.
-
-Windows users: (Placeholder)
+6.
+  Mac/Linux users: Open a terminal window and navigate to the directory where these .sh files are located. Type ```sudo ./port-forwarding-unix.sh```.
+  Windows users: (Placeholder)
 7. Delete all of your extracted files when you are done. 
 
 ### How to Run:
