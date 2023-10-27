@@ -1,21 +1,22 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 user=$SUDO_USER
+home=/home/$user
 
 if [ "$EUID" -ne 0 ]
     then echo "Script is being ran without sudo. Exiting..."
     exit 1
 fi
 
-if [ ! -f port-forward.tar.gz ]; then
+if [ ! -f "port-forward.tar.gz" ]; then
     echo "port-forward.tar.gz is not found. Make sure you run this in the same directory as your tarball."
     exit 1
 fi
 
-echo "Checking for ~/.ssh/ folder..."
-if [ ! -d ~/.ssh/ ]; then
-  echo "~/.ssh/ does not exist. Creating..."
-  mkdir ~/.ssh/
+echo "Checking for $home/.ssh/ folder..."
+if [ ! -d "$home/.ssh/" ]; then
+  echo "$home/.ssh/ does not exist. Creating..."
+  mkdir $home/.ssh/
 fi
 
 echo "Extracting the tarball."
@@ -38,39 +39,38 @@ if [ ! -f merge_key ]; then
 fi
 
 echo "Checking for config file..."
-if [ ! -e ~/.ssh/config ]; then
-    echo "config does not exist. Moving current config file from tarball."
-    touch ~/.ssh/config
-    cat config >> $HOME/.ssh/config
-    # mv config ~/.ssh/
+if [ ! -f "$home/.ssh/config" ]; then
+    echo "config does not exist. Creating the config file."
+    touch $home/.ssh/config
+    cat config >> $home/.ssh/config
+    # mv config $home/.ssh/
 else 
     echo "File exists."
-    if grep -q "Host mergejump" "$HOME/.ssh/config"; then
+    if grep -Fxq "Host mergejump" "$home/.ssh/config"; then
         echo "Merge information was found. Ignoring..."
-        rm -f config
     else
         echo "Merge information was not found. Appending the config file to the existing config file..."
-        echo -e "" >> $HOME/.ssh/config
-        cat config >> $HOME/.ssh/config
-        rm -f config
+        echo -e "" >> $home/.ssh/config
+        cat config >> $home/.ssh/config
     fi
 fi 
 
 echo "Checking if known_hosts exists..."
-if [ ! -f "$HOME/.ssh/known_hosts" ]; then
+if [ ! -f "$home/.ssh/known_hosts" ]; then
     echo "known_hosts does not exist. Creating the known_hosts file."
-    touch $HOME/.ssh/known_hosts
-    chmod 600 $HOME/.ssh/known_hosts
-    chown -v $user $HOME/.ssh/known_hosts
+    touch $home/.ssh/known_hosts
+    chmod 600 $home/.ssh/known_hosts
+    chown -v $user $home/.ssh/known_hosts
 else 
     echo "known_hosts exists. Ignoring..."
 fi 
 
-echo "Moving merge_key into ~/.ssh..."
-mv merge_key ~/.ssh/
-cd ~/.ssh
+echo "Moving merge_key into $home/.ssh..."
+mv merge_key $home/.ssh/
+pushd $home/.ssh > /dev/null
 chmod 600 merge_key
 chown $user merge_key config
+popd > /dev/null
 
 # Clean up:
 cd ..

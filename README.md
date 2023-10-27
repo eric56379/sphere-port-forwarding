@@ -9,16 +9,17 @@
 - port-forwarding-windows.sh
 - port-forwarding-mac.sh
 - port-forwarding-linux.sh
-6. Open up a terminal window and navigate to the directory where these .sh files are located.
-7. Type ```sudo port-forwarding-XXX.sh```, where XXX is the operating system which you are on.
-8. Delete all of your extracted files when you are done.
+6. Mac/Linux users: Open a terminal window and navigate to the directory where these .sh files are located. Type ```sudo port-forwarding-XXX.sh```, where XXX is the operating system which you are on.
+
+Windows users: (Placeholder)
+7. Delete all of your extracted files when you are done. 
 
 ### How to Run:
 1. To access your XDC <ins>without<ins> port-forwarding, you can type ```ssh username-xdc-proj```.
 - Example: ```ssh umdsecXX-xdc-umdsecXX``` where umdsecXX is the name of the user and the name of the project, with xdc being the name of the XDC.
 2. To access your XDC <ins>with<ins> port-forwarding, you can type ```ssh -L port:node:80 username-xdc-proj```
 - Example: ```ssh -L 8080:pathname:80 umdsecXX-xdc-umdsecXX``` where umdsecXX is the name of the user and the name of the project, with xdc being the name of the node. 8080 is an arbitrary number and can be a random four-digit number. node is the name of the materialization's node that you want to connect to. <ins>Read your lab manual if you're unsure what the name of your node is.<ins>
-3. You will be asked to add two footprints when SSH'ing your first time. Type ```yes``` when prompted. The first one is for access to Merge. The second one is access to your XDC.
+3. You will be asked to add two footprints when SSH'ing your first time. Type ```yes``` when prompted. The first one is to add Merge as a recognized host. The second one is to add your XDC as a recognized host. This only needs to be done once.
 
 ### Additional Notes:
 - You are unable to do port-forwarding with more than one account. If you need to change accounts, please delete the ```Host mergejump``` and ```Host username-xdc-proj``` block from your ```config``` file and delete your ```merge-key``` file, both of which are located in ```~/.ssh/```. Then, re-run ```bash /share/port-forward-setup.sh``` on the Merge account which you want to port-forward from.
