@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-USER=$SUDO_USER
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-
-if [ "$EUID" -ne 0 ]
-    then echo "Script is being ran without sudo. Exiting..."
-    exit 1
-fi
+USER_HOME=$HOME
 
 if [ ! -f "port-forward.tar.gz" ]; then
     echo "port-forward.tar.gz is not found. Make sure you run this in the same directory as your tarball."
