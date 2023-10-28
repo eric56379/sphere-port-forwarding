@@ -7,7 +7,7 @@
 4. For security, delete your ```port-forward-data.tar.gz``` file from your XDC.
 5. Extract ```port-forward-data.tar.gz```. You will find another tar.gz file called ```port-forward.tar.gz```. Do **NOT** extract this file. This is required for one of the two following scripts that you will run on your machine:
 6. Follow the instructions below based on your operating system:
-- Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```sudo ./port-forwarding-unix.sh```.
+- Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```./port-forwarding-unix.sh```.
 - Windows 10/11 users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually. <ins>If the window closes instantly</ins>, open up a Powershell window as an administrator and type ```Set-ExecutionPolicy RemoteSigned```. Re-run the script.
 7. Delete all of your extracted files when you are done. They are no longer required.
 
