@@ -8,7 +8,7 @@
 5. Extract ```port-forward-data.zip``` onto your machine.
 6. Follow the instructions below based on your operating system:
 - Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```./port-forwarding-unix.sh```.
-- Windows 10/11 users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually. <ins>If the window closes instantly</ins>, open up a Powershell window as an administrator and type ```Set-ExecutionPolicy RemoteSigned```. Re-run the script.
+- Windows 10/11 users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually. <ins>If the window closes instantly</ins>, open Command Prompt or Powershell and type ```powershell -ExecutionPolicy Bypass -File .\path\to\port-forward-windows.ps1```.
 
   - **Note**: If you are experiencing issues with running the script(s), you may do Step 6 manually. Simply navigate to your home directory if you're on Unix (or ```C:\Users\username``` if you're on Windows), and locate a folder called ```.ssh```. You will need to be able to view hidden files for this. If the folder doesn't exist, create it. Navigate into ```.ssh``` and put ```config``` and ```merge_key``` into your folder. These are in the zip file that you downloaded.
 
