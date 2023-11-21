@@ -2,13 +2,16 @@
 
 ### Setup:
 1. Run ```bash /share/port-forward-setup.sh``` on Deterlab. You must be in your XDC.
-2. Access your ```/home/user``` directory on the left sidebar of Jupyter. The output of the script will be titled "port-forward-data.tar.gz".
-3. Right-click on ```port-forward-data.tar.gz```, then click on "Download". It will download to your machine.
-4. For security, delete your ```port-forward-data.tar.gz``` file from your XDC.
-5. Extract ```port-forward-data.tar.gz```. You will find another tar.gz file called ```port-forward.tar.gz```. Do **NOT** extract this file. This is required for one of the two following scripts that you will run on your machine:
+2. Access your ```/home/user``` directory on the left sidebar of Jupyter. The output of the script will be titled "port-forward-data.zip".
+3. Right-click on ```port-forward-data.zip```, then click on "Download". It will download to your machine.
+4. For security, delete the ```port-forward-data.zip``` file from your XDC.
+5. Extract ```port-forward-data.zip``` onto your machine.
 6. Follow the instructions below based on your operating system:
 - Mac/Linux users: Open a terminal window and navigate to the directory where your .sh file is located. Type ```./port-forwarding-unix.sh```.
 - Windows 10/11 users: Right-click on ```port-forwarding-windows.ps1```, and click "Run with PowerShell". Once the script completes, press Enter or close the window manually. <ins>If the window closes instantly</ins>, open up a Powershell window as an administrator and type ```Set-ExecutionPolicy RemoteSigned```. Re-run the script.
+
+  - **Note**: If you are experiencing issues with running the script(s), you may do Step 6 manually. Simply navigate to your home directory if you're on Unix (or ```C:\Users\username``` if you're on Windows), and locate a folder called ```.ssh```. You will need to be able to view hidden files for this. If the folder doesn't exist, create it. Navigate into ```.ssh``` and put ```config``` and ```merge_key``` into your folder. These are in the zip file that you downloaded.
+
 7. Delete all of your extracted files when you are done. They are no longer required.
 
 ### How to Run:
