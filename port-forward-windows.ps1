@@ -1,8 +1,3 @@
-if (-not(Test-Path -Path "$PSScriptRoot\port-forward.tar.gz" -PathType Leaf)) {
-    "port-forward.tar.gz is not found. Make sure you run this in the same directory as your tarball."
-    exit
-}
-
 Write-Host "Checking if $HOME\.ssh\ exists."
 if (Test-Path $HOME\.ssh\) {
     Write-Host "$HOME\.ssh\ exists."
@@ -11,22 +6,17 @@ if (Test-Path $HOME\.ssh\) {
     New-Item -ItemType Directory -Path $HOME\.ssh\
 }
 
-Write-Host "Extracting the tarball."
-tar -xvzf $PSScriptRoot\port-forward.tar.gz
-
-Set-Location port-forwarding-data
-
 if (Test-Path config) {
     # Continue.
 } else {
-    Write-Host "config was not found in the tarball. Please re-run the setup from your XDC and try again."
+    Write-Host "config was not found in the zip file. Please re-run the setup from your XDC and try again."
     exit
 }
 
 if (Test-Path merge_key) {
     # Continue.
 } else {
-    Write-Host "merge_key was not found in the tarball. Please re-run the setup from your XDC and try again."
+    Write-Host "merge_key was not found in the zip file. Please re-run the setup from your XDC and try again."
     exit
 }
 
@@ -66,10 +56,7 @@ if ((Test-Path $HOME\.ssh\merge_key)) {
     Move-Item -Path merge_key -Destination $HOME\.ssh
 }
 
-Set-Location ..
-Remove-Item port-forwarding-data -Recurse
-
 Write-Host "`n"
-Write-Host "Task completed. You may now delete this tarball."
-Write-Host "HINT: Before deleting the tarball, view the README.md file for instructions with how to access your XDC from terminal."
+Write-Host "Task completed. You may now delete this zip file."
+Write-Host "HINT: Before deleting the zip file, view the README.md file for instructions with how to access your XDC from terminal."
 Read-Host -Prompt "Press Enter to exit"
