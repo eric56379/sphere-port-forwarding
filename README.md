@@ -1,7 +1,7 @@
 # Port Forwarding Setup for Deterlab
 
 ### Setup:
-1. Run ```bash /share/port-forward-setup.sh``` on Deterlab. You must be in your XDC.
+1. Run ```bash /share/port-forward-setup.sh``` on Deterlab. You must be in your XDC. You may need to run ```sudo chmod 777 port-forward-setup``` in order to execute the script.
 2. Access your ```/home/user``` directory on the left sidebar of Jupyter. The output of the script will be titled "port-forward-data.zip".
 3. Right-click on ```port-forward-data.zip```, then click on "Download". It will download to your machine.
 4. For security, delete the ```port-forward-data.zip``` file from your XDC.
