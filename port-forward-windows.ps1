@@ -1,3 +1,7 @@
+# Set the working directory to the script's directory.
+$scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+Set-Location -Path $scriptDir
+
 Write-Host "Checking if $HOME\.ssh\ exists."
 if (Test-Path "$HOME\.ssh\") {
     Write-Host "$HOME\.ssh\ exists."
@@ -8,6 +12,9 @@ if (Test-Path "$HOME\.ssh\") {
 
 $currentDir = Get-Location
 $parentDir = Split-Path -Path $currentDir -Parent
+
+Write-Host "Current directory: $currentDir"
+Write-Host "Parent directory: $parentDir"
 
 if (Test-Path -Path "$parentDir\config") {
     Write-Host "config found in the parent directory."
