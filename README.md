@@ -3,7 +3,7 @@
 Before running the setup, make sure that you have retrieved the port-forward-setup.sh script from me on Slack. Put this in the home directory of your XDC, and run ```sudo chmod 777 port-forward-setup```.
 
 ### Setup:
-1. Run ```./port-forward-setup``` on SPHERE. You must be in your XDC. You may need to run ```sudo chmod 777 port-forward-setup``` in order to execute the script. You can get this fron Slack under #announcements.
+1. Run ```./port-forward-setup``` on SPHERE. You must be in your XDC. You may need to run ```sudo chmod 777 port-forward-setup``` in order to execute the script.
 2. Access your ```/home/user``` directory on the left sidebar of Jupyter. The output of the script will be titled "port-forward-data.zip".
 3. Right-click on ```port-forward-data.zip```, then click on "Download". It will download to your machine.
 4. For security, delete the ```port-forward-data.zip``` file from your XDC.
